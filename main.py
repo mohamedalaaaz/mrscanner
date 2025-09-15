@@ -4,7 +4,7 @@ sock =socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 socket.setdefaulttimeout(2)
 port=int(input("[*] enter port to scan"))
 host =input("[*]enter host to scan:!]")
-#198.164.56.1
+
 
 def portscanne (port):
     if sock.connect_ex((host,port)):
@@ -14,5 +14,6 @@ def portscanne (port):
         print("port is open %d" % (port))
 
 for port in range(1,100):
+
 
     portscanne(port)
