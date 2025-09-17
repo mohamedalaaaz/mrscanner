@@ -1,7 +1,19 @@
 from socket import *
-from termcolor import colored
+
 import optparse
 from threading import *
+
+
+def connscan(tgthost,tgtport):
+    try:
+        sock=socket(AF_INET,SOCK_STREAM)
+        sock.connect((tgthost,tgtport))
+        print("%d /tcp open"%tgtport)
+    except:
+        print("%d /tcp closed"%tgtport)
+    finally:
+        sock.close()
+
 
 def portscan(tgthost,tgtport):
     try:
@@ -18,7 +30,7 @@ def portscan(tgthost,tgtport):
 
     setdefaulttimeout(1)
     for tgtport in tgtport:
-        t=Thread(traget=connscan,args=(tgthost),int(tgtport)))
+        t=Thread(traget=connscan,args=(tgthost,int(tgtport)))
         t.start()
 
 
